@@ -121,3 +121,8 @@ switchBgrButton.addEventListener("click", () => {
     newColor = palette[colorIndex];
     colorIndex = (colorIndex + 1) % palette.length;
 });
+
+
+
+
+
