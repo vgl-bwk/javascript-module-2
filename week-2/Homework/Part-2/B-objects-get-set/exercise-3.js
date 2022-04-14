@@ -3,6 +3,12 @@
 */
 
 // WRITE CODE HERE
+const kitten = {
+    name: 'Gilbert',
+    breed: 'Persian',
+    gender: 'male',
+    cute: true
+}
 
 
 console.log(kitten.name);
