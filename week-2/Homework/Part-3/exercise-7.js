@@ -4,17 +4,39 @@ E-commerce
 You have to create an e-commerce shopping cart
 
 First of all we need 2 arrays, 
-the list of available products and the list of products introduced in the shopping cart.
+the list of available products and the list of products introduced in the shopping cart.*/
 
-1. Fill the products list with at least 4 products, what attributes de we have? 
-at least should have:
-var product = {
-  id:
-  name:
-  price:
-  stock:
+var cart = []
+
+/* 1. Fill the products list with at least 4 products, what attributes de we have? 
+at least should have:*/
+
+var product = [
+  {
+  id: 12784695235,
+  productName: "Ultra-thick Yoga Mat",
+  price: 100,
+  stock: 20
+},
+{
+  id: 1278339850,
+  productName: "Uncomfortably-tight Yoga Pants",
+  price: 80,
+  stock: 33
+},
+{id: 1278997312,
+  productName: "How to Yoga for dum-dums",
+  price: 25,
+  stock: 3
+},
+{
+  id: 1278953157,
+  productName: "Super-comfy gaming chair",
+  price: 500,
+  stock: 15
 }
-id is a unique number that identifies each product
+]
+/*id is a unique number that identifies each product
 
 3. Create a function addToShoppingCart to add a product to the shopping cart list giving the product id,
 the function will add the product to the selectedProduct list, and add the price to the totalPrice

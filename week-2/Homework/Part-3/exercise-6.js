@@ -20,28 +20,37 @@ console.log(sequence);
 
 3. Create an object method with the name .addSkill() to be able to add skills from it
 
-4. Create a function to add a skill to all members in a list of mentors
+4. Create a function to add a skill to all members in a list of mentors */
 
 function addSkill(mentors,newSkill){
-  //your code here
+  return mentors.forEach(mentor => mentor.addSkill(newSkill))
 }
 
-5. Create a function to remove a skill to all members in a list of mentors
+/*  5. Create a function to remove a skill to all members in a list of mentors*/
 
 function removeSkill(mentors,newSkill){
-  //your code here
+
+  return mentors.forEach(mentor => mentor.skills = mentor.skills.filter(skill => skill !== newSkill))}
+
+/*  6. Create a function mentorWithMoreSkills() that returns the name of the mentor with more number of skills*/
+
+function mentorWithMoreSkill(mentors){
+  let highestSkillCount = 0
+  mentors.forEach(mentor => {if (mentor.skills.length > highestSkillCount) { highestSkillCount = mentor.skills.length}    
+  })
+  let mostSkilled = mentors.find(mentor => mentor.skills.length == highestSkillCount);
+  console.log(`The most skilled mentor is ${mostSkilled.firstName} ${mostSkilled.lastName}`);
 }
 
-6. Create a function mentorWithMoreSkills() that returns the name of the mentor with more number of skills
+/*7. Create an object method .addStudentLikes() that increments by one the attribute studentLikes
 
-7. Create an object method .addStudentLikes() that increments by one the attribute studentLikes
+8. Create a function that adds a student like to all mentors in the array*/
 
-8. Create a function that adds a student like to all mentors in the array
-
-function addStudentLikes(mentors){
-  //your code here
+function likesForEveryone(mentors){
+  mentors.forEach(mentor => mentor.addStudentLikes())
 }
-*/ 
+
+/* //your code here */ 
 
 var mentors = [
   {
@@ -55,7 +64,13 @@ var mentors = [
         company: "Google",
         position: "Senior developer",
         city: "Barcelona"
-      }
+      },
+    addSkill: function(skill) {
+      this.skills.push(skill)
+    },
+    addStudentLikes: function(){
+      this.studentLikes = this.studentLikes +1
+    }
   },
   {
     firstName: "Leo",
@@ -68,7 +83,13 @@ var mentors = [
         company: "FC Barcelona",
         position: "Player",
         city: "Barcelona"
-      }
+      },
+    addSkill: function(skill) {
+      this.skills.push(skill)
+    },
+    addStudentLikes: function(){
+      this.studentLikes = this.studentLikes +1
+    }
   },
   {
     firstName: "John",
@@ -81,7 +102,13 @@ var mentors = [
         company: "Facebook",
         position: "Software Manager",
         city: "Chicago"
-      }
+      },
+    addSkill: function(skill) {
+      this.skills.push(skill)
+    },
+    addStudentLikes: function(){
+      this.studentLikes = this.studentLikes +1
+    }
   },  
   {
     firstName: "Giorgio",
@@ -94,10 +121,41 @@ var mentors = [
         company: "Amazon",
         position: "Senior developer",
         city: "Barcelona"
-      }
+      },
+    addSkill: function(skill) {
+      this.skills.push(skill)
+    },
+    addStudentLikes: function(){
+      this.studentLikes = this.studentLikes +1
+    }
   },
 
 ];
 
 //YOUR CODE HERE
 
+function mentorIntroduction (array){
+ array.filter(mentor => mentor.job.city === 'Barcelona' &&  mentor.skills.includes('React')).forEach(mentor => console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`));
+}
+/*mentorIntroduction(mentors);*/
+
+function changeDate (array){
+  array.forEach(mentor => {if (mentor.job.city === 'Barcelona'){
+    mentor.class = 'Jun1';
+    mentor.skills.push('SQL');
+    }
+  })
+}
+changeDate(mentors);
+console.log(mentors);
+
+addSkill(mentors, "python");
+console.log(mentors);
+
+removeSkill(mentors, "python");
+console.log(mentors);
+
+mentorWithMoreSkill(mentors);
+
+likesForEveryone(mentors);
+console.log(mentors);

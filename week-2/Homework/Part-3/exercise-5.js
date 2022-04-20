@@ -39,6 +39,18 @@ var writers = [
   },
 ];
 
+function introduction(array){
+ return array.forEach(person => {console.log(`Hi, my name is ${person.firstName} ${person.lastName}. I am ${person.age} years old, and work as a ${person.occupation}.`); 
+  });
+}
+
+function aliveOnly(array){
+  return introduction(array.filter(person => person.alive === true))
+}
+
+introduction(writers);
+aliveOnly(writers);
+
 /*
 If you want an extra challenge, only `console.log()` the writers that are alive.
 */
