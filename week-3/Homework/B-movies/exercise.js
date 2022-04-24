@@ -14,7 +14,7 @@ Create a new function called "addMovie"
 - it receives a movie object as an argument - your can create a new object for your favorite movie following using the "myMovies" objects as a guide 
 - it adds the new movie to the list of movies after 2 seconds. Remember to setTimeout to achieve that
 Call addMovies to add the new movie to the list and then showMovies to see the movies added on the screen.
-How many movies can you see on your page?
+How many movies can you see on your page? 4
 
 Task 3
 Can you make sure the new movie you just added is showing on the screen? 
@@ -58,10 +58,60 @@ var movies = [
   },
 ];
 
+const movie1 = {
+  title: "Her",
+  director: "Spike Jonze",
+  type: "drama",
+  haveWatched: true
+}
+
 // create showMovies function
+
+function showMovie (film) {
+  const allMovies = document.getElementById("all-movies");
+  const titleAndDirector = document.createElement("p")
+  titleAndDirector.innerText = `${film.title} - ${film.director}`
+  allMovies.appendChild(titleAndDirector)
+}
+
+function showMovies (list) {
+  setTimeout(function (){
+  const moviesNumber = document.getElementById("movies-number")
+  moviesNumber.innerHTML = `${list.length}`;
+  list.forEach( film => showMovie(film)); 
+},1000);
+}
 
 
 // create a new movie object for your favorite movie
 
+function addMovie (film) {
+  setTimeout(function(){movies.push(film)
+  showMovie(film)}, 2000)
+}
+
+addMovie(movie1);
+showMovies(movies);
 
 // create addMovies function
+
+const movieForm = document.createElement('div')
+movieForm.innerHTML = '<h2>Enter your favourite movies!</h2><form><label>Name of the film: </label><input type="text" id="fname"></input><br><label>Director: </label><input type="text" id="fdir"></input><br><label>Genre: </label><input type="text" id="fgen"></input><br><label>Have you seen it? </label><input type="checkbox" id="fseen"></input><br><input type="Button" id="movie-submit" value="Submit"></form>'
+main.appendChild(movieForm);
+
+document.querySelector('#movie-submit').addEventListener('click', (e) => {
+  e.preventDefault();
+  const filmName = document.querySelector('#fname').value;
+  const filmDirector = document.querySelector('#fdir').value;
+  const filmGenre = document.querySelector('#fgen').value;
+  const filmSeen = document.querySelector('#fseen').checked;
+
+const newMovie = {
+  title: filmName,
+  director: filmDirector,
+  type: filmGenre,
+  haveWatched: filmSeen
+};
+
+addMovie(newMovie);
+})
