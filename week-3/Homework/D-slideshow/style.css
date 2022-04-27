@@ -1,1 +1,5 @@
 /** Write your CSS in here **/
+#frame {
+    height: 800px;
+    width: 600px;
+}
